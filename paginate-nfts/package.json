@@ -19,7 +19,15 @@
     "generic-vn": "file:generic-vn-0.1.0.tgz",
     "next": "12.1.6",
     "react": "^18.2.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-addons-css-transition-group": "^15.6.2",
+    "react-full-screen": "^0.2.2",
+    "react-key-handler": "^1.0.1",
+    "react-rangeslider": "^2.2.0",
+    "react-scripts": "1.0.17",
+    "react-select": "^2.0.0-beta.4",
+    "react-sound": "^1.1.0",
+    "wheel-react": "^1.0.3"
   },
   "devDependencies": {
     "eslint": "8.15.0",

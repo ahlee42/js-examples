@@ -16,6 +16,17 @@ import { clusterApiUrl } from '@solana/web3.js';
 import type { AppProps } from 'next/app';
 import type { FC } from 'react';
 import { useMemo } from 'react';
+import "../game/styles/config.css";
+import "../game/styles/container.css";
+import "../game/styles/backlog.css";
+import "../game/styles/choicesoverlay.css";
+import "../game/styles/effects.css";
+import "../game/styles/menubuttons.css";
+import "../game/styles/saveloadmenu.css";
+import "../game/styles/sprites.css";
+import "../game/styles/textbox.css";
+import "../game/styles/titlescreen.css";
+import "../game/styles/transitions.css";
 
 require('@solana/wallet-adapter-react-ui/styles.css');
 
