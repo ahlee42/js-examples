@@ -10,9 +10,15 @@
   },
   "dependencies": {
     "@metaplex-foundation/js": "^0.11.5",
-    "@solana/web3.js": "^1.41.4",
+    "@solana-mobile/wallet-adapter-mobile": "^0.9.0",
+    "@solana/wallet-adapter-base": "^0.9.10",
+    "@solana/wallet-adapter-react": "^0.15.9",
+    "@solana/wallet-adapter-react-ui": "^0.9.12",
+    "@solana/wallet-adapter-wallets": "^0.17.1",
+    "@solana/web3.js": "^1.50.1",
+    "generic-vn": "file:generic-vn-0.1.0.tgz",
     "next": "12.1.6",
-    "react": "18.1.0",
+    "react": "^18.2.0",
     "react-dom": "18.1.0"
   },
   "devDependencies": {

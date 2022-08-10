@@ -6,21 +6,29 @@
 }
 
 .container {
-  margin: auto;
+  margin: 1rem;
+  margin-left: 30rem;
   width: 100%;
   max-width: 500px;
   padding: 2rem;
 }
 
 .title {
-  text-align: left;
-  font-size: 12px;
+  text-align: center;
+  font-size: 2rem;
   font-weight: 500;
   color: #0f172a;
 }
 
+.walletdiv {
+  margin-left: 40rem;
+  margin-top: 2rem;
+}
+
 .nftForm {
   display: flex;
+  align-items: center;
+  margin-left: 10rem;
 }
 
 .nftForm input {
@@ -50,6 +58,8 @@
   color: #0f172a;
   font-weight: bold;
   cursor: pointer;
+  align-items: center;
+  display: inline block;
 }
 
 .styledButton:hover {
@@ -65,14 +75,17 @@
 }
 
 .nftPreview {
-  margin-top: 2rem;
-  display: flex;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  display: inline-block;
   flex-direction: column;
   align-items: center;
+  height: 100px;
+  width: 100px;
 }
 
 .nftPreview h1 {
-  font-size: 20px;
+  font-size: 7.5px;
   font-weight: 500;
   color: #0f172a;
   border: 1.5px solid #0f172a;

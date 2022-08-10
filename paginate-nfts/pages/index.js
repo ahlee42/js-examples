@@ -3,27 +3,39 @@ import styles from '../styles/Home.module.css';
 import { Metaplex } from '@metaplex-foundation/js';
 import { clusterApiUrl, Connection, PublicKey } from '@solana/web3.js';
 import { useEffect, useState } from 'react';
+import { WalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { background } from '../public/village_bedroom.jpeg';
 
-const connection = new Connection(clusterApiUrl('devnet'));
+
+const connection = new Connection(clusterApiUrl('mainnet-beta'));
 const mx = Metaplex.make(connection);
 
 export default function Home() {
-  const [address, setAddress] = useState(
-    'EAqjUWVX2m9fdfGNBzTY5zSiid1Sb9V3x6EL8ssZBTkw',
-  );
+  const { publicKey, connected } = useWallet();
+  // const [address, setAddress] = useState(
+  //   'HKBvP2rRpGJ8MPWJu3y4Bcy48Qb1WWrghvGrxXojbzqy',
+  // );
+  
+  const address = publicKey ? publicKey.toString() : "Connect your wallet and click Fetch"
 
+  const creatorAddress = 'HKBvP2rRpGJ8MPWJu3y4Bcy48Qb1WWrghvGrxXojbzqy';
+  const [connectedHook, setConnectedHook] = useState(connected);
   const [nftList, setNftList] = useState(null);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentView, setCurrentView] = useState(null);
-  const perPage = 1;
+  const [selectedNFT, setSelectedNFT] = useState(null);
+
+  const perPage = 9;
 
   const fetchNFTs = async () => {
     try {
       setLoading(true);
       setCurrentView(null);
       const list = await mx.nfts().findAllByOwner(new PublicKey(address));
-      setNftList(list);
+      const filtered_list = list.filter((nft) => { return nft.updateAuthority.toString() === creatorAddress});
+      setNftList(filtered_list);
       setCurrentPage(1);
     } catch (e) {
       console.error(e);
@@ -45,6 +57,26 @@ export default function Home() {
     execute();
   }, [nftList, currentPage]);
 
+  // listen for user to connect their wallet via hook
+  // useEffect(() => {
+  //   console.log("We are: " + connected)
+  //   if(connected) {
+  //     fetchNFTs();
+  //     console.log("User has connected. Fetching Tamashi NFTs.")
+  //   }
+  //   else {
+  //     let i = 0;
+  //     while(i++ < 1) {
+  //       location.reload();
+  //       if(i == 2) {
+  //         i = 0;
+  //       }
+  //     }
+      
+  //   }
+    
+  // }, [connectedHook]);
+
   const loadData = async (startIndex, endIndex) => {
     const nftsToLoad = nftList.filter((nft, index) => {
       return (
@@ -65,24 +97,36 @@ export default function Home() {
     }
   };
 
+  const startNovel = (nft) => {
+    console.log("it worked: " + nft.mint)
+    alert("You have chosen: " + nft.name + ".\nPlease wait a minute for the visual novel to load.")
+    navigate('/game')
+  };
+
   return (
+    // <div style={{backgroundImage: "url(/village_bedroom.png)" }}>
     <div>
       <Head>
         <title>Metaplex and Next.js example</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <div className={styles.walletdiv}>
+      <WalletMultiButton />
+      <WalletDisconnectButton />
+      </div>
       <div className={styles.App}>
+        
         <div className={styles.container}>
-          <h1 className={styles.title}>Wallet Address</h1>
-          <div className={styles.nftForm}>
-            <input
+        
+          <h1 className={styles.title}>Choose Your Character</h1>
+             <div className={styles.nftForm}>
+            {/* <input
               type="text"
               value={address}
               onChange={(event) => setAddress(event.target.value)}
-            />
+            />  */}
             <button className={styles.styledButton} onClick={fetchNFTs}>
-              Fetch
+              Fetch Souls
             </button>
           </div>
           {loading ? (
@@ -97,6 +141,8 @@ export default function Home() {
                   src={nft.metadata.image || '/fallbackImage.jpg'}
                   alt="The downloaded illustration of the provided NFT address."
                 />
+                <button onClick={() => startNovel(nft)}>Select NFT</button>
+                {/* {console.log("nft address is: " + nft.address)} */}
               </div>
             ))
           )}
