@@ -16,7 +16,6 @@
     "@solana/wallet-adapter-react-ui": "^0.9.12",
     "@solana/wallet-adapter-wallets": "^0.17.1",
     "@solana/web3.js": "^1.50.1",
-    "generic-vn": "file:generic-vn-0.1.0.tgz",
     "next": "12.1.6",
     "react": "^18.2.0",
     "react-dom": "18.1.0",

@@ -1,14 +1,14 @@
 // bg
-const microphone = require("./bg/microphone.jpeg");
-const entrance = require("./bg/entrance.jpeg");
+const microphone = "/bg/microphone.jpeg";
+const entrance = "/bg/entrance.jpeg";
 // bgm
 // const take = require("./bgm/take.mp3");
 // speakers
 const b = "Block";
 // sprites
-const bn = require("./sprites/block-neutral.png");
-const bh = require("./sprites/block-happy.png");
-const bp = require("./sprites/block-pout.png");
+const bn = "/sprites/block-neutral.png";
+const bh = "/sprites/block-happy.png";
+const bp = "/sprites/block-pout.png";
 
 let story = [
   {
